@@ -42,11 +42,13 @@ def handleClient(connection, addr):
 			message = connection.recv(1024).decode()
 			print (now() + " " +  str(addr) + "#  ", message)
 			if (message == "exit" or not message):
+				print("Klienten har exitet")
 				break
 			### Write your code here ###
 			#broadcast this message to the others
-			print("Før kall til broadcast")
-			broadcast(connection, f'{addr}: {message}')
+			else:
+				print("Før kall til broadcast")
+				broadcast(connection, f'{addr}: {message}')
 			### Your code ends here ###
 	except:
 		all_client_connections.remove(connection)
@@ -76,7 +78,7 @@ def main():
 	try:
 		# Use the bind function wisely!
 		### Write your code here ###
-		serverSocket.bind(('127.0.0.1', serverPort))
+		serverSocket.bind(('', serverPort))
 		### Your code ends here ###
 
 	except:
