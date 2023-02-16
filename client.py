@@ -41,8 +41,7 @@ while True:
                 if not message:
                     print("Mistet forbindelse")
                     break
-                else:
-                    sys.exit()
+                print("Mottatt fra server: ", message)
             except socket.error as e:
                 print("Error receiving data from server")
                 break
