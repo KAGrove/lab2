@@ -57,8 +57,13 @@ def broadcast(connection, message):
 	### Write your code here ###
 	for c in all_client_connections:
 		if c != connection:
-			print("Inne c-løkken")
-			c.send(message.encode())
+			try:
+				print("Inne c-løkken")
+				c.send(message.encode())
+			except:
+				print("Error")
+				c.close()
+				all_client_connections.remove(c)
 	### Your code ends here ###
 
 def main():
