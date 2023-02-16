@@ -9,7 +9,7 @@ import time
 import sys
 
 
-#this is too keep all the newly joined connections! 
+#this is too keep all the newly joined connections!
 all_client_connections = []
 
 def now():
@@ -24,7 +24,7 @@ def handleClient(connection, addr):
 	"""
 
 	#this is where we broadcast everyone that a new client has joined
-	
+
 	### Write your code here ###
 	# append this this to the list for broadcast
 	all_client_connections.append(connection)
@@ -33,6 +33,7 @@ def handleClient(connection, addr):
 
 
 	### Your code ends here ###
+
 
 	while True:
 		try:
@@ -67,7 +68,7 @@ def main():
 		### Write your code here ###
 		serverSocket.bind(('127.0.0.1', serverPort))
 		### Your code ends here ###
-		
+
 	except:
 		print("Bind failed. Error : ")
 		sys.exit()
