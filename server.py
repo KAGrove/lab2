@@ -70,17 +70,14 @@ def main():
 		print("Bind failed. Error : ")
 		sys.exit()
 	serverSocket.listen(10)
-	print ('The server is ready to receive')
+	print('The server is ready to receive')
 	while True:
 		### Write your code here ###
 		connectionSocket, addr = serverSocket.accept()  # accept a connection
-		#K
-		thread.start_new_thread(handleClient, (connectionSocket, addr))
-		### You code ends here ###
-		 
-		print('Server connected by ', addr) 
+		print('Server connected by ', addr)
 		print('at ', now())
-		thread.start_new_thread(handleClient, (connectionSocket,addr)) 
+		thread.start_new_thread(handleClient, (connectionSocket, addr))
+	### You code ends here ###
 	serverSocket.close()
 
 if __name__ == '__main__':
