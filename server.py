@@ -31,6 +31,9 @@ def handleClient(connection, addr):
 	# create a message to inform all other clients
 	# that a new client has just joined.
 
+	message = f'{addr}' "joined the chat room"
+	broadcast(connection, message)
+
 
 	### Your code ends here ###
 

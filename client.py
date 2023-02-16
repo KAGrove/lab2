@@ -37,7 +37,7 @@ while True:
 
             ### write your code here ###
             try:
-                message = client_socket.recv(1024).decode('cp865')
+                message = client_socket.recv(1024).decode()
                 if message == "":
                     print(message)
                 else:
@@ -54,7 +54,7 @@ while True:
             #send a message to the server
 
             ### write your code here ###
-            client_socket.send(message.encode('cp865'))
+            client_socket.send(message.encode())
             ### your code ends here ###
 
 
