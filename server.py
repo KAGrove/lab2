@@ -11,6 +11,8 @@ import sys
 
 #this is too keep all the newly joined connections!
 all_client_connections = []
+print("Broadcasting")
+
 
 def now():
 	"""
@@ -42,13 +44,12 @@ def handleClient(connection, addr):
 		while True:
 			message = connection.recv(1024).decode()
 			print (now() + " " +  str(addr) + "#  ", message)
-			if (message == "exit".encode()):
+			if (message == "exit"):
 				print("Klienten har exitet")
 				break
 			### Write your code here ###
 			#broadcast this message to the others
 			else:
-				print("Før kall til broadcast")
 				broadcast(connection, f'{addr}: {message}')
 			### Your code ends here ###
 	except:
@@ -56,12 +57,10 @@ def handleClient(connection, addr):
 		connection.close()
 
 def broadcast(connection, message):
-	print("Broadcasting")
 	### Write your code here ###
 	for c in all_client_connections:
 		if c != connection:
 			try:
-				print("Inne c-løkken")
 				c.send(message.encode())
 			except:
 				print("Error")
