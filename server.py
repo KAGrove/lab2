@@ -37,9 +37,8 @@ def handleClient(connection, addr):
 
 	### Your code ends here ###
 
-
-	while True:
-		try:
+	try:
+		while True:
 			message = connection.recv(1024).decode()
 			print (now() + " " +  str(addr) + "#  ", message)
 			if (message == "exit" or not message):
@@ -48,9 +47,9 @@ def handleClient(connection, addr):
 			#broadcast this message to the others
 			broadcast(connection, f'{addr} joined the chat!'.encode())
 			### Your code ends here ###
-		except:
-			all_client_connections.remove(connection)
-			connection.close()
+	except:
+		all_client_connections.remove(connection)
+		connection.close()
 
 def broadcast(connection, message):
 	print("Broadcasting")
