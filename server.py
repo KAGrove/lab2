@@ -57,7 +57,7 @@ def broadcast(connection, message):
 	### Write your code here ###
 	for c in all_client_connections:
 		if c != connection:
-			connection.send(message)
+			connection.send(message.encode())
 	### Your code ends here ###
 
 def main():
