@@ -35,16 +35,18 @@ def handleClient(connection, addr):
 	### Your code ends here ###
 
 	while True:
-		message = connection.recv(1024).decode('cp865')
-		print (now() + " " +  str(addr) + "#  ", message)
-		if (message == "exit" or not message):
-			break
-		### Write your code here ###
-		#broadcast this message to the others
-		broadcast(connection, f'{addr} joined the chat!'.encode('cp865'))
-		### Your code ends here ###
-	connection.close()
-	all_client_connections.remove(connection)
+		try:
+			message = connection.recv(1024).decode('cp865')
+			print (now() + " " +  str(addr) + "#  ", message)
+			if (message == "exit" or not message):
+				break
+			### Write your code here ###
+			#broadcast this message to the others
+			broadcast(connection, f'{addr} joined the chat!'.encode('cp865'))
+			### Your code ends here ###
+		except:
+			connection.close()
+			all_client_connections.remove(connection)
 
 def broadcast(connection, message):
 	print("Broadcasting")
