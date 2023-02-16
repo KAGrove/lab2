@@ -37,6 +37,7 @@ while True:
 
             ### write your code here ###
             try:
+                print("Velkommen til chat!")
                 message = client_socket.recv(1024).decode()
                 if not message:
                     print("Mistet forbindelse")
