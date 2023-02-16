@@ -41,7 +41,7 @@ def handleClient(connection, addr):
 			break
 		### Write your code here ###
 		#broadcast this message to the others
-		broadcast(f'{addr} joined the chat!'.encode('cp865'))
+		broadcast(connection, f'{addr} joined the chat!'.encode('cp865'))
 		### Your code ends here ###
 	connection.close()
 	all_client_connections.remove(connection)
