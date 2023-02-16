@@ -22,31 +22,35 @@ def handleClient(connection, addr):
 	"""
 	a client handler function 
 	"""
+
 	#this is where we broadcast everyone that a new client has joined
 	
 	### Write your code here ###
 	# append this this to the list for broadcast
-	# create a message to inform all other clients 
+	all_client_connections.append(connection)
+	# create a message to inform all other clients
 	# that a new client has just joined.
+
 
 	### Your code ends here ###
 
 	while True:
-		message = connection.recv(2048).decode()
+		message = connection.recv(1024).decode('cp865')
 		print (now() + " " +  str(addr) + "#  ", message)
 		if (message == "exit" or not message):
 			break
 		### Write your code here ###
 		#broadcast this message to the others
-
+		broadcast(f'{addr} joined the chat!'.encode('cp865'))
 		### Your code ends here ###
 	connection.close()
 	all_client_connections.remove(connection)
 
 def broadcast(connection, message):
-	print ("Broadcasting")
+	print("Broadcasting")
 	### Write your code here ###
-
+	for connection in all_client_connections:
+		connection.send(message)
 	### Your code ends here ###
 
 def main():
@@ -59,17 +63,19 @@ def main():
 	try:
 		# Use the bind function wisely!
 		### Write your code here ###
-
+		serverSocket.bind(('127.0.0.1', serverPort))
 		### Your code ends here ###
 		
-	except: 
+	except:
 		print("Bind failed. Error : ")
 		sys.exit()
 	serverSocket.listen(10)
 	print ('The server is ready to receive')
 	while True:
 		### Write your code here ###
-		connectionSocket, addr =   # accept a connection
+		connectionSocket, addr = serverSocket.accept()  # accept a connection
+		#K
+		thread.start_new_thread(handleClient, (connectionSocket, addr))
 		### You code ends here ###
 		 
 		print('Server connected by ', addr) 
