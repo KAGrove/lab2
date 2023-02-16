@@ -45,6 +45,7 @@ def handleClient(connection, addr):
 				break
 			### Write your code here ###
 			#broadcast this message to the others
+			print("Før kall til broadcast")
 			broadcast(connection, f'{addr} joined the chat!'.encode())
 			### Your code ends here ###
 	except:
@@ -56,6 +57,7 @@ def broadcast(connection, message):
 	### Write your code here ###
 	for c in all_client_connections:
 		if c != connection:
+			print("Inne c-løkken")
 			connection.send(message.encode())
 	### Your code ends here ###
 
