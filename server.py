@@ -46,7 +46,7 @@ def handleClient(connection, addr):
 			### Write your code here ###
 			#broadcast this message to the others
 			print("Før kall til broadcast")
-			broadcast(connection, f'{addr} joined the chat!'.encode())
+			broadcast(connection, f'{addr}: {message}')
 			### Your code ends here ###
 	except:
 		all_client_connections.remove(connection)
