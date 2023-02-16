@@ -37,7 +37,7 @@ while True:
 
             ### write your code here ###
             try:
-                message = client_socket.recv(1024).decode()
+                message = client_socket.recv(1024).decode("utf-8")
                 if not message:
                     print("Mistet forbindelse")
                     break

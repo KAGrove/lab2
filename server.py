@@ -11,8 +11,6 @@ import sys
 
 #this is too keep all the newly joined connections!
 all_client_connections = []
-print("Broadcasting")
-
 
 def now():
 	"""
