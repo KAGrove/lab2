@@ -13,6 +13,7 @@ client_socket.connect(('127.0.0.1', 12000))
 ### your code ends here ###
 
 while True:
+    print("Velkommen til chat!")
 
     """ we are going to use a select-based approach here because it will help
     us deal with two inputs (user's input (stdin) and server's messages from socket)
@@ -37,7 +38,6 @@ while True:
 
             ### write your code here ###
             try:
-                print("Velkommen til chat!")
                 message = client_socket.recv(1024).decode()
                 if not message:
                     print("Mistet forbindelse")
