@@ -38,8 +38,9 @@ while True:
             ### write your code here ###
             try:
                 message = client_socket.recv(1024).decode()
-                if message == "":
-                    print(message)
+                if not message:
+                    print("Mistet forbindelse")
+                    break
                 else:
                     sys.exit()
             except socket.error as e:
