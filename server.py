@@ -58,7 +58,7 @@ def broadcast(connection, message):
 	for c in all_client_connections:
 		if c != connection:
 			print("Inne c-løkken")
-			connection.send(message.encode())
+			c.send(message.encode())
 	### Your code ends here ###
 
 def main():
