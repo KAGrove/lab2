@@ -41,7 +41,7 @@ def handleClient(connection, addr):
 		while True:
 			message = connection.recv(1024).decode()
 			print (now() + " " +  str(addr) + "#  ", message)
-			if (message == "exit" or not message):
+			if (message == "exit"):
 				print("Klienten har exitet")
 				break
 			### Write your code here ###
