@@ -32,6 +32,7 @@ def handleClient(connection, addr):
 	# that a new client has just joined.
 
 	message = f"{addr} joined the chat room"
+	connection.send("Velkommen til denne chat!")
 	broadcast(connection, message)
 
 
